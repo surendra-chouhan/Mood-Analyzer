@@ -5,19 +5,16 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class MoodAnalyserTest {
-    @Test
-    public void givenMessageReturnSad() {
-        String message = "I am sad";
-        MoodAnalyser mood = new MoodAnalyser(message);
-        String message1 = mood.analyseMood();
-        Assert.assertEquals("Sad", message1);
-    }
 
     @Test
     public void givenMessageReturnHappy() {
-        String message = null;
-        MoodAnalyser mood = new MoodAnalyser(message);
-        String message1 = mood.analyseMood();
-        Assert.assertEquals("Happy", message1);
+        MoodAnalyser mood = new MoodAnalyser(null);
+
+        try {
+            mood.analyseMood();
+        }
+        catch(MoodAnalyserException e){
+            Assert.assertEquals("Please Enter a right input", e.getMessage());
+        }
     }
 }
